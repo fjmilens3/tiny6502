@@ -58,7 +58,7 @@ void output_add_values(output *output, const char *values, size_t size)
     if (output->pc < output->start) {
         output->start = output->pc;
     }
-    if (output->pc + size >= 0x10000) {
+    if (output->pc + size > 0x10000) {
         if (output->pc_overflow_handler.callback) {
             output->pc_overflow_handler.callback(output, output->pc_overflow_handler.data);
             return;
